@@ -26,6 +26,8 @@ mixin _$HomeStore on HomeStoreBase, Store {
 
   @override
   String toString() {
-    return '- counter: ${counter}';
+    return '''
+counter: ${counter}
+    ''';
   }
 }
