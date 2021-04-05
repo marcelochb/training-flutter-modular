@@ -30,5 +30,5 @@ flutter:
   assets:
     - assets/images/logo.png
     - assets/images/defaultImage.png
-  scripts:
-    mobx: flutter pub run build_runner watch --delete-conflicting-outputs
+scripts:
+  mobx: flutter pub run build_runner watch --delete-conflicting-outputs

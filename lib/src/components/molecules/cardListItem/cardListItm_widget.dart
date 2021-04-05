@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pocket_modular/src/components/atoms/button/button_widget.dart';
 import 'package:pocket_modular/src/components/molecules/cardInfo/cardInfo_widget.dart';
 import 'package:pocket_modular/src/modules/card/card_model.dart';
@@ -23,12 +24,7 @@ class CardListItemWidget extends StatelessWidget {
             child: ButtonWidget(
               label: 'Detalhes',
               onPress: () async {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) => CardDetailPage(
-                //               id: item.id,
-                //             )));
+                Modular.to.pushNamed('/CardDetailPage/${item.id}');
               },
             ),
           ),

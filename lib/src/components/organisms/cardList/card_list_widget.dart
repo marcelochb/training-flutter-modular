@@ -25,7 +25,6 @@ class _CardListWidgetState
 
   @override
   void initState() {
-    this.loadData();
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {

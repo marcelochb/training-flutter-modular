@@ -9,8 +9,6 @@ class CardListController = _CardListControllerBase with _$CardListController;
 abstract class _CardListControllerBase with Store {
   final CardRepository cardRepository;
 
-  _CardListControllerBase(this.cardRepository);
-
   @observable
   ObservableList<ModelOfCard> cards = <ModelOfCard>[].asObservable();
 
@@ -36,5 +34,9 @@ abstract class _CardListControllerBase with Store {
     }
     isLoading = false;
     isLoadingCardListItem = false;
+  }
+
+  _CardListControllerBase(this.cardRepository) {
+    getCards();
   }
 }

@@ -7,6 +7,9 @@ class CardModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute, child: (_, args) => CardListPage()),
-    ChildRoute('/CardDetail', child: (_, args) => CardDetailPage()),
+    ChildRoute('/CardDetailPage/:cardId',
+        child: (_, args) => CardDetailPage(
+              cardId: args.params['cardId'],
+            )),
   ];
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pocket_modular/src/components/molecules/cardInfo/cardInfo_widget.dart';
@@ -37,39 +38,41 @@ class _CardDetailPageState
           title: Text('Detalhes'),
           elevation: 0.0,
         ),
-        body: Stack(
-          children: [
-            Container(
-              color: ColorTheme.instance.element,
-            ),
-            if (controller.isLoading)
-              SpinKitRotatingCircle(
-                color: Colors.white,
-                size: 50.0,
-              )
-            else
-              ListView(children: [
-                Column(children: [
-                  CardInfoWidget(
-                    item: controller.card,
-                    isBackgroundColorWhite: false,
-                  ),
-                  Container(
-                    height: 500,
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: controller.card.foreignNames.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return ForeignNameListItemWidget(
-                            item: controller.card.foreignNames[index],
-                            isBackgroundColorWhite: true,
-                          );
-                        }),
-                  ),
+        body: Observer(builder: (_) {
+          return Stack(
+            children: [
+              Container(
+                color: ColorTheme.instance.element,
+              ),
+              if (controller.isLoading)
+                SpinKitRotatingCircle(
+                  color: Colors.white,
+                  size: 50.0,
+                )
+              else
+                ListView(children: [
+                  Column(children: [
+                    CardInfoWidget(
+                      item: controller.card,
+                      isBackgroundColorWhite: false,
+                    ),
+                    Container(
+                      height: 500,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: controller.card.foreignNames.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return ForeignNameListItemWidget(
+                              item: controller.card.foreignNames[index],
+                              isBackgroundColorWhite: true,
+                            );
+                          }),
+                    ),
+                  ]),
                 ]),
-              ]),
-          ],
-        ));
+            ],
+          );
+        }));
   }
 }
