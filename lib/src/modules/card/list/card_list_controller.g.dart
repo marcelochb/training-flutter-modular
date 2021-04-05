@@ -63,20 +63,6 @@ mixin _$CardListController on _CardListControllerBase, Store {
     return _$getCardsAsyncAction.run(() => super.getCards());
   }
 
-  final _$_CardListControllerBaseActionController =
-      ActionController(name: '_CardListControllerBase');
-
-  @override
-  dynamic changeLoading() {
-    final _$actionInfo = _$_CardListControllerBaseActionController.startAction(
-        name: '_CardListControllerBase.changeLoading');
-    try {
-      return super.changeLoading();
-    } finally {
-      _$_CardListControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
   @override
   String toString() {
     return '''

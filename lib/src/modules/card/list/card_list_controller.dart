@@ -23,9 +23,6 @@ abstract class _CardListControllerBase with Store {
   bool isLoadingCardListItem = false;
 
   @action
-  changeLoading() => isLoading = !isLoading;
-
-  @action
   getCards() async {
     if (_currentCardListPage > 1) isLoadingCardListItem = true;
 
