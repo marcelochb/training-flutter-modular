@@ -1,6 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pocket_modular/src/shared/utils/constants.dart';
+import 'package:pocket_modular/src/store/auth/auth_store.dart';
+import 'package:pocket_modular/src/store/auth/auth_repository.dart';
+import 'package:pocket_modular/src/store/auth/auth_repository_interface.dart';
+import 'package:pocket_modular/src/store/user/user_store.dart';
 
 import 'modules/card/card_module.dart';
 import 'modules/card/card_repository.dart';
@@ -14,6 +18,9 @@ class AppModule extends Module {
     Bind((i) => CardDetailController(i.get<CardRepository>())),
     Bind((i) => CardRepository(i.get<Dio>())),
     Bind((i) => Dio(BaseOptions(baseUrl: URL_BASE))),
+    Bind((i) => AuthStore(i.get<AuthRepositoryInterface>())),
+    Bind((i) => AuthRepository()),
+    Bind((i) => UserStore()),
   ];
 
   @override
