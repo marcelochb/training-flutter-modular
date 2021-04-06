@@ -24,7 +24,7 @@ class CardListItemWidget extends StatelessWidget {
             child: ButtonWidget(
               label: 'Detalhes',
               onPress: () async {
-                Modular.to.pushNamed('/CardDetailPage/${item.id}');
+                Modular.to.pushNamed('/CardListPage/CardDetailPage/${item.id}');
               },
             ),
           ),
