@@ -9,6 +9,10 @@
 - Management local state (resiliência);
 - Animations;
 
+## Design
+
+![alt_text](https://github.com/marcelochb/training-flutter-modular/blob/main/assets/design/signin.png)
+
 ## Tecnologies
   - Firebase (auth | firestone)
   - dio;
