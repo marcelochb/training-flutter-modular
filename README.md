@@ -12,6 +12,9 @@
 ## Design
 
 ![alt_text](https://github.com/marcelochb/training-flutter-modular/blob/main/assets/design/signin.png)
+![alt_text](https://github.com/marcelochb/training-flutter-modular/blob/main/assets/design/signup.png)
+![alt_text](https://github.com/marcelochb/training-flutter-modular/blob/main/assets/design/cardlist.png)
+![alt_text](https://github.com/marcelochb/training-flutter-modular/blob/main/assets/design/carddetail.png)
 
 ## Tecnologies
   - Firebase (auth | firestone)
