@@ -7,5 +7,5 @@ abstract class AuthRepositoryInterface {
   Future signOut();
   Future<String> getToken({UserCredential signInResponse});
   Future<String> getDatabaseUser({UserCredential signInResponse});
-  Future<bool> createDatabaseUser({String email, String name, String uid});
+  Future createDatabaseUser({String email, String name, String uid});
 }

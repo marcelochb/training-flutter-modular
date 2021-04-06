@@ -18,7 +18,7 @@ class _CardListPageState
         backgroundColor: ColorTheme.instance.background,
         title: Observer(builder: (_) {
           return Text(
-            'userName',
+            controller.user.name,
             style: TextStyle(color: ColorTheme.instance.text),
           );
         }),
@@ -27,7 +27,7 @@ class _CardListPageState
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
                 onTap: () {
-                  // controller.signOut();
+                  controller.signOut();
                 },
                 child: Icon(
                   Icons.logout,

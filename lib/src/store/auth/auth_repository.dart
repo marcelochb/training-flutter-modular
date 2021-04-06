@@ -13,73 +13,55 @@ class AuthRepository implements AuthRepositoryInterface {
   @override
   Future<UserCredential> signIn(
       {@required String email, @required String password}) async {
-    UserCredential signInResponse;
-    try {
-      signInResponse = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
-    } catch (e) {}
+    final signInResponse = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password);
     return signInResponse;
   }
 
   @override
   Future signOut() async {
-    try {
-      await FirebaseAuth.instance.signOut();
-    } catch (e) {}
+    await FirebaseAuth.instance.signOut();
   }
 
   @override
   Future<UserCredential> signUp(
       {@required String email, @required String password}) async {
-    UserCredential signUpResponse;
-    try {
-      signUpResponse = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
-    } catch (e) {}
+    final signUpResponse = await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email, password: password);
+    print('signuprespont $signUpResponse');
     return signUpResponse;
   }
 
   @override
   Future<String> getToken({@required UserCredential signInResponse}) async {
-    String tokenResponse;
-    try {
-      tokenResponse = await signInResponse.user.getIdToken();
-    } catch (e) {}
+    final tokenResponse = await signInResponse.user.getIdToken();
     return tokenResponse;
   }
 
   @override
   Future<String> getDatabaseUser(
       {@required UserCredential signInResponse}) async {
-    String userName;
-    try {
-      FirebaseFirestore.instance
-          .collection('users')
-          .doc(signInResponse.user.uid)
-          .get()
-          .then((DocumentSnapshot documentSnapshot) async {
-        if (documentSnapshot.exists) {
-          print('retorno database ${documentSnapshot.data()}');
-        }
-      });
-    } catch (e) {}
-    return userName;
+    final response = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(signInResponse.user.uid)
+        .get();
+    print('response $response');
+    return response.data()['name'];
   }
 
   @override
-  Future<bool> createDatabaseUser(
+  Future createDatabaseUser(
       {@required String name,
       @required String email,
       @required String uid}) async {
     bool isUserCreated = false;
-    try {
-      FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid)
-          .set({'name': name, 'email': email, 'uid': uid}).then(
-              (_) => isUserCreated = true);
-    } catch (e) {}
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .set({'name': name, 'email': email, 'uid': uid}).then(
+            (_) => isUserCreated = true);
 
+    print('isUserCreated $isUserCreated');
     return isUserCreated;
   }
 }
